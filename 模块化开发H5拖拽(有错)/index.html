@@ -1,0 +1,272 @@
+<!doctype html><!--声明html版本编写指令  H5-->
+<html>
+	<head>
+		<!--声明页面编码  uft-8 国际编码-->
+		<meta charset="UTF-8">
+		<!--网站三要素 关键字  页面描述  标题-->
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>Document</title>
+		<style type="text/css">
+			.demo {
+				padding-top: 30px;
+			}
+			.container {
+				background-color: #f0f3f9;
+				font-family: 'PingFang SC', 'Microsoft Yahei';
+				min-height: 610px;
+				position: relative;
+				overflow: hidden;
+			}
+			.module-ul {
+				width: 180px;
+				position: absolute; top: 0; bottom: 0; left: 0;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				background-color: #34538b;
+			}
+			.module-li {
+				margin: 20px auto;
+				padding: 10px 0;
+				background-color: #fff;
+				width: 150px;
+				text-align: center;
+				cursor: move;
+				position: relative;
+			}
+			.module-li:hover::before {
+				content: '';	
+				position: absolute;
+				left: 0; right: 0; top: 0; bottom: 0;
+				padding: 10px;
+				background-color: rgba(0,0,0,.5);
+			}
+			.module-body {
+				margin-left: 180px;
+			}
+			.module-stage {
+				max-width: 90%;
+				min-width: 600px;
+				margin: 0 auto;
+			}
+			.module-placeholder {
+				height: 584px;
+				background-color: #fff;
+				position: relative;
+				margin: 20px 0;
+			}
+			.module-placeholder:empty::before {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				color: #aaa;
+				content: '从左侧拖模块放这里';
+				font-size: 20px;
+			}
+			.module-placeholder.dragenter {
+				outline: 2px dashed #ddd;
+			}
+
+			.module-drag {
+				padding: 10px 0;
+				margin: 20px 0;
+				background-color: #fff;
+				text-align: center;
+				cursor: move;
+				position: relative;
+			}
+			.module-drag.dragstart {
+				opacity: .5;
+			}
+			.module-drag:hover::before {
+				content: '';
+				position: absolute;
+				top: 0; left: 0; bottom: 0; right: 0;
+			}
+
+			/* 模块拖拽删除 */
+			.module-remove {
+				position: absolute;
+				top: 0; bottom: 0; left: -180px;
+				width: 180px;
+				padding-top: 40px;
+				background-color: #34538b;
+				transition: left .25s, background-color .2s;
+				z-index: 1;
+			}
+			.module-remove.dragenter {
+				left: 0;
+			}
+			.module-remove-icon {
+				position: absolute;
+				font-size: 160px;
+				left: 50%; top: 45%;
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				color: #fff;
+			}
+			.module-remove:hover,
+			.module-remove.dragover {
+				background-color: #F15656;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<ul id="module" class="module-ul">	
+				<li class="module-li" draggable="true" data-url="images/bb1.jpg">
+					<img class="module-img" src="images/mm1.jpg" height="96" alt="模块占位图1">
+				</li>
+				<li class="module-li" draggable="true" data-url="images/bb2.jpg">
+					<img class="module-img" src="images/mm2.jpg" height="128" alt="模块占位图2">
+				</li>
+				<li class="module-li" draggable="true" data-url="images/bb3.jpg">
+					<img class="module-img" src="images/mm3.jpg" height="96" alt="模块占位图3">
+				</li>
+				<li class="module-li" draggable="true" data-url="images/bb4.jpg">
+					<img class="module-img" src="images/mm4.jpg" height="86" alt="模块占位图4">
+				</li>
+			</ul>
+			<div id="moduleRemove" class="module-remove"><span class="module-remove-icon">×</span></div>
+			<div id="moduleBody" class="module-body">
+				<div id="moduleStage" class="module-stage">
+					<div id="modulePlaHd" class="module-placeholder"></div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.1.min.js"></script>
+	    <script>
+			var moduleDrag = (function(){
+			    var CL_dragenter = "dragenter";
+			    var CL_moudle = "jsDragModule";
+
+				return{
+                    el: {},
+					events: function(){
+                        var self = this;
+                        var el = this.el;
+                        //元素
+						var moudle = el.module, stage = el.stage;
+						//拖拽的模块
+						var modlder = el.modlder;
+
+						//左侧拖拽
+						moudle.delegate("li",{//delegate全局委托，添加一个或多个事件
+						    dragstart: function(ev){
+						        var li = $(this);//标记当前的拖拽元素
+								elDrag = li;
+							},
+							dragend: function(ev){
+						        elDrag = null;
+						        ev.preventDefault();
+							}
+						});
+						//经过占位模块
+						modlder.on({
+							dragover: function(ev){
+                                ev.preventDefault();
+							},
+							dragenter: function(){
+							    modlder.addClass(CL_dragenter);
+							},
+							drop: function(ev){
+							    var url = elDrag && elDrag.attr("data-url");
+							    if(url){
+                                    modlder.empty().hide();
+                                    //在占位元素的前面插入模块，就是插入大图
+									self.insertMoudle('<img src="'+url+'">', modlder,"before");
+								}
+
+                                modlder.removeClass(CL_dragenter);
+                                ev.preventDefault();
+							},
+						});
+					},
+					insertMoudle: function(html){
+					    var self = this;
+					    var htmlWrap = '<div class="'+ CL_moudle + 'module-drag" draggable="true">' + html + '</div>';
+                         //缓存内容
+						var module = $(htmlWrap);
+						//插入内容
+						self.el.modlder.before(module)
+					},
+				    //初始化
+				    init: function(){
+				        var self = this;
+				        //将一些元素用 jquery扩展到之前的扩展的self.el命名空间
+				        self.el = $.extend(self.el,{
+				            module: $("#module"),
+                            remove: $("#moduleRemove"),
+                            body: $("#moduleBody"),
+                            stage: $("#moduleStage"),
+                            modlder: $("#modulePlaHd")
+						});
+				        self.events();
+					}
+				}
+			})();
+		</script>
+	</body>
+</html>
+<!--
+    draggable="true" 给元素加上拖拽属性（图片自带拖拽）
+    H5拖拽事件
+
+    //被拖拽的元素
+    ondragstart 拖拽开始时候触发什么事件
+    ondrag 拖拽过程中触发什么事件
+    ondragend 拖拽结束
+
+    //拖拽过程中进入（目标元素）
+    ondragenter 进入目标元素
+    ondragover 在目标元素上移动
+    ondragleave 移开目标元素
+    ondrop 拖拽结束（鼠标释放）：浏览器默认事件会阻止释放后改变目标元素
+
+    阻止浏览器默认事件：
+    ev.preventDefault();
+    (别往了浏览器兼容问题：ev = ev || window.event)
+
+
+    模拟模块：
+    1.原始方法：
+    function fn1（）{}
+    function fn2（）{}
+
+    2.对象字面量表示方法：包含一组键值对的对象
+    var module = new Object({
+        number: 10，
+        fn1: function(){
+        alert(1);
+        },
+        fn2: function(){
+        alert(2);
+        }
+    })
+    使用时直接module.fn1();
+    缺点：会暴露模块中的所有成员，很容易在外部更改
+
+    3.Moudle模式(moudle意思是模组，module是模块)
+        Moudle模式最初定义在传统的软件工程，为类提供私有和共有的封装方法
+        js不能直接声明类，我们可以使用闭包来封装私有属性和方法
+
+        通过自执行产生闭包
+        var module = (function(){
+            var number = 0;
+            return{
+                fn1: function(){
+                    alert(1);
+                },
+                fn2: function(){
+                    alert(2);
+                }
+            }
+        })();
+
+        好处：不能通过外部更改
+
+        4.“放大”模式
+-->

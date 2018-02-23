@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/css.css" />
+    <title>视频点播</title>
+</head>
+<body>
+    <div id="banner">
+        <div class="tab-pic">
+            <div class="item" style="display: block"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="bth-list">
+            <div class="btn select">
+                <img src="images/nav1.jpg" alt="" />
+            </div>
+            <div class="btn">
+                <img src="images/nav2.jpg" alt="" />
+            </div>
+            <div class="btn">
+                <img src="images/nav3.jpg" alt="" />
+            </div>
+            <div class="btn">
+                <img src="images/nav4.jpg" alt="" />
+            </div>
+            <div class="btn">
+                <img src="images/nav5.jpg" alt="" />
+            </div>
+            <div class="btn">
+                <img src="images/nav6.jpg" alt="" width="90" height="51"/>
+            </div>
+            <div class="btn">
+                <img src="images/nav7.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        //单纯鼠标划过写法
+//        $(".btn").mouseover(function(){
+//            var index = $(this).index();//获取下标
+//            $(this).addClass("select").siblings().removeClass("select");//.siblings()返回被选元素的所有同级元素
+//            $(".item").eq(index).fadeIn().siblings().fadeOut();
+//        });
+
+        //自动循环写法
+        var index = 0;
+        $(".btn").mouseover(function(){
+            var index = $(this).index();
+            $(this).addClass("select").siblings().removeClass("select");//.siblings()返回被选元素的所有同级元素
+            $(".item").eq(index).fadeIn().siblings().fadeOut();
+        });
+        var time = setInterval(function(){
+            if(index > 6){
+                index = 0;
+            }
+            else{
+                index++;
+            }
+            $(".btn").eq(index).addClass("select").siblings().removeClass("select");
+            $(".item").eq(index).fadeIn().siblings().fadeOut();
+        },2000);
+    </script>
+</body>
+</html>

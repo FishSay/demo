@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--设置网页关键词 方便搜索引擎搜索 seo优化-->
+    <meta name="keywords" content="web前端，0基础，实战教室">
+    <!--设置网页描述 免费的广告位-->
+    <meta name="description" content="欢迎各位同学来到web前端0基础
+           教室">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;/*清除默认 外边距*/
+            padding: 0px;/*清除默认内边距*/
+        }
+        a{
+            text-decoration: none;/*下划线样式清除*/
+            color: #fff;
+        }
+        h3,p {/*逗号代表并且*/
+            text-align: center; /*文本居中*/
+            line-height: 50px; /*文本行高*/
+        }
+        li{/*标签选择器*/
+            list-style: none;/*清除默认小圆点*/
+
+        }
+        #wrap{
+            width: 1200px;
+            height: 360px;
+            /*盒子阴影：横向位移（0） 纵向位移（0） 羽化（9px） 半径 颜色
+            (取代效果生硬的border标签)*/
+            box-shadow: 0 0 9px #222;
+            margin: 50px auto;/*外边距：上下 左右 自动*/
+        }
+        #wrap ul{
+            display: flex;/*css3的弹性盒模型*/
+            flex-wrap: wrap;/*开启换行 默认不换行*/
+            justify-content: space-around;/*主轴（横向）方向对其方式 均分 环绕*/
+            align-items: center;/*辅轴（纵向）方向居中对齐*/
+            width: 100%;
+            height: 100%;
+        }
+        #wrap ul li{
+            position: relative;/*相对定位父级别（谁不动谁爸爸）*/
+            width: 360px;
+            height: 139px;
+            box-shadow: 0 0 4px #222;
+            border: 4px solid #fff;
+        }
+        #wrap ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        #wrap ul li .title{
+            /*1.display: none;*/
+            overflow: hidden;/*超出部分隐藏*/
+            position: absolute;/*绝对定位：子级别（谁动谁子级）*/
+            top: 50%;/*定位子元素顶端距离定位父级别顶端距离设置为0*/
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,.8);/*最后的.8为透明度*/
+            transition: 1s;/*css3过渡效果*/
+        }
+        #wrap ul li:hover .title{/*伪类*/
+            /*2.display: block;*/
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .title a{/*全部为#wrap ul li .title a，一般本标签前最多3个*/
+            display: block;
+            width: 80px;
+            height: 30px;
+            margin: 0 auto;
+            background: #368;
+            text-align: center;/*水平居中*/
+            line-height: 30px;/*行高=元素高度*/
+            border-radius: 6px;/*圆角*/
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li>
+                <img src="images/1.webp" alt="1">
+                <div class="title">
+                    <h3>口水菌品鉴</h3>
+                    <p>口水菌品鉴|宅男宅女觅食记</p>
+                    <a href="http://www.baidu.com">查看详情</a>
+                </div><!--alt为图片关键词 提示功能-->
+            </li>
+            <li>
+                <img src="images/2.webp" alt="2">
+                <div class="title">
+                    <h3>口水菌品鉴</h3>
+                    <p>口水菌品鉴|宅男宅女觅食记</p>
+                    <a href="http://www.baidu.com">查看详情</a>
+                </div>
+            </li>
+            <li>
+                <img src="images/3.webp" alt="3">
+                <div class="title">
+                    <h3>口水菌品鉴</h3>
+                    <p>口水菌品鉴|宅男宅女觅食记</p>
+                    <a href="http://www.baidu.com">查看详情</a>
+                </div>
+            </li>
+            <li>
+                <img src="images/4.webp" alt="4">
+                <div class="title">
+                    <h3>口水菌品鉴</h3>
+                    <p>口水菌品鉴|宅男宅女觅食记</p>
+                    <a href="http://www.baidu.com">查看详情</a>
+                </div>
+            </li>
+            <li>
+                <img src="images/5.webp" alt="5">
+                <div class="title">
+                    <h3>口水菌品鉴</h3>
+                    <p>口水菌品鉴|宅男宅女觅食记</p>
+                    <a href="http://www.baidu.com">查看详情</a>
+                </div>
+            </li>
+            <li>
+                <img src="images/6.webp" alt="6">
+                <div class="title">
+                    <h3>口水菌品鉴</h3>
+                    <p>口水菌品鉴|宅男宅女觅食记</p>
+                    <a href="http://www.baidu.com">查看详情</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+<!--
+    行内元素 inline 盛放文本 不具备结构性
+        a span i b em
+    块级元素 block 结构性 可以设置宽度高度
+        p div li h3
+-->
+</body>
+</html>

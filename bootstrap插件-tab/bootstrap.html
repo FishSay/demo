@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+  <title></title>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="">
+  <script src="js/bootlint.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>jquery插件--标签页（tab）</h1>
+
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#p1">十元套餐</a></li>
+    <li class="active"><a data-toggle="tab" href="#p2">二十元套餐</a></li>
+    <li><a href="#p3" data-toggle="tab">三十元套餐</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div id="p1" class="tab-pane fade">十元套餐详情：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid, amet corporis eum facere harum hic maiores nemo non quisquam reiciendis sed. A nesciunt repellendus sint ut velit? Nesciunt, omnis!</div>
+    <div id="p2" class="tab-pane fade in active">二十元套餐详情：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi doloremque, facilis fuga iusto molestias optio perspiciatis rem totam. Architecto consequuntur fuga ipsa nam omnis praesentium similique. Id, natus, rerum. Architecto.</div>
+    <div id="p3" class="tab-pane fade">三十元套餐详情：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam beatae consequuntur debitis dolore dolores enim eveniet exercitationem expedita explicabo facere id, iste mollitia porro quos sit tempore ut vel?</div>
+  </div>
+</div>
+<script>
+  //---------------完成项目后删除---------------
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s);
+  })();
+  //--------------------end--------------------
+</script>
+</body>
+</html>

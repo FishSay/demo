@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+}
+#banner{
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+.tab-pic {
+    width: inherit; /*inherit继承父级属性值*/
+    height: inherit;
+}
+.item{
+    display: none;/*隐藏元素*/
+    position: absolute;
+    top: 0;
+    width: inherit; /*inherit继承父级属性值*/
+    height: inherit;
+}
+.bth-list{
+    /*flex布局本身是一个弹性盒子容器，不影响自身，影响子集的内容，在移动端和响应式中应用*/
+    display: flex;/*弹性盒模型*/
+    justify-content: space-around;/*定义了flex才能用,space-around间距相等*/
+    position: absolute;
+    left: 50%;
+    margin-left: -350px;
+    bottom: 50px;
+    width: 700px;
+    height: 55px;
+}
+.btn{
+    width: 90px;
+    height: 51px;
+    border: 2px solid #fff;
+}
+.btn:hover{
+    border-color: #ff9000;
+}
+.select{
+    border-color: #ff9000;
+}
+/*../访问上一级菜单*/
+/*:nth-child在IE9以下不兼容*/
+.item:nth-child(1){background: url("../images/1.jpg") center;}
+.item:nth-child(2){background: url("../images/2.jpg") center;}
+.item:nth-child(3){background: url("../images/3.jpg") center;}
+.item:nth-child(4){background: url("../images/4.jpg") center;}
+.item:nth-child(5){background: url("../images/5.jpg") center;}
+.item:nth-child(6){background: url("../images/6.jpg") center;}
+.item:nth-child(7){background: url("../images/7.jpg") center;}

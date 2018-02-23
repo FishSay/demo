@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>360拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #photo{
+            width: 640px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+        ul{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        li{
+            float: left;
+            list-style: none;
+            width: 200px;
+            height: 120px;
+            margin: 10px 0 0 10px;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="photo">
+        <ul>
+            <li><img src="images/1.png" alt=""></li>
+            <li><img src="images/2.png" alt=""></li>
+            <li><img src="images/3.png" alt=""></li>
+            <li><img src="images/4.png" alt=""></li>
+            <li><img src="images/5.png" alt=""></li>
+            <li><img src="images/6.png" alt=""></li>
+            <li><img src="images/7.png" alt=""></li>
+            <li><img src="images/8.png" alt=""></li>
+            <li><img src="images/9.png" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        /*
+            程序逻辑：图片是可以拖拽的，是移动的float-〉定位
+            1.将图片的浮动布局改成定位布局
+                1.1：获取li元素
+                1.2：获取当前li元素的位置，把位置数据存到数组
+                1.3：给每个li设置定位，并设置相应的位置值；
+            2.每个li实现拖拽  从哪里来，到哪里去
+                2.1：获取元素原始位置
+                2.2：获取鼠标点击的位置1
+                2.3：获取鼠标拖拽时候的位置2
+                2.4：计算新位置
+                2.5：li设置一个新位置
+            3.碰撞检测
+                3.1:检测是否碰撞成功
+                3.2:碰撞成功，则改变被碰撞元素的样式
+            4.碰撞成功就交换位置
+         */
+        //1.1：获取li元素
+        var liList = document.getElementsByTagName("li");
+        //console.log(liList);
+        var photo = document.getElementById("photo");
+        var liOffsetArr = [];//定义数组
+        var l = liList.length;
+        var z = 10;//默认层级值
+        var goalLi = "";//目标元素（碰撞成功元素）
+        //1.2：获取当前li元素位置，把位置数据存到数组
+        //.offsetTop纵坐标，.offsetLeft横坐标，.push()将元素添加进数组中
+        for(var i=0; i<l; i++){
+            liOffsetArr.push([liList[i].offsetTop,liList[i].offsetLeft]);//二位数组
+            //console.log(liOffsetArr);
+        }
+        //1.3：给每个li设置定位，并设置相应的位置值
+        for(var j = 0; j<l; j++){
+            //为什么一开始不设置position值？因为一开始设置需要挨个量位置
+            //，所以在获取所有位置后再设置position,节省时间
+            //通过js设置的值是字符串形式
+            liList[j].style.position = "absolute";//将li设置为绝对定位
+            liList[j].style.top = liOffsetArr[j][0] + "px";//设置li纵坐标
+            liList[j].style.left = liOffsetArr[j][1] + "px";//设置li横坐标
+            //js后来附加的样式不会改变原来有的样式，若不像下面代码一样清除margin，则会有两个margin
+            liList[j].style.margin = "0";
+        }
+
+        for(var k=0; k<l; k++){
+            liList[k].onmousedown = function(){
+                //2.1：获取元素原始位置
+                var self = this;//将当前元素保存起来
+                var selfLeft = self.offsetLeft;//原始x坐标位置
+                var selfTop = self.offsetTop;//原始y坐标位置
+                //console.log(selfLeft,selfTop);
+                //2.2：获取鼠标点击的位置1
+                var ev = ev || window.event;//获取window事件（有的浏览器支持直接ev，有的不支持，这条代码为了比秒因为浏览器兼容而出错）
+                var x0 = ev.clientX;//鼠标点击时候x轴位置１
+                var y0 = ev.clientY;//鼠标点击时候ｙ轴位置１
+                //2.3：获取鼠标拖拽时候的位置2
+                document.onmousemove = function(){//鼠标移动
+                    var ev = ev || window.event;
+                    var x1 = ev.clientX;//鼠标移动时x轴的位置2
+                    var y1 = ev.clientY;//鼠标移动时y轴的位置2
+
+                    var xOffset = x1 - x0 + selfLeft;//元素新x轴位置
+                    var yOffset = y1 - y0 + selfTop;//元素新y轴位置
+                    //console.log(xOffset,yOffset);
+                    self.style.left = xOffset + "px";
+                    self.style.top = yOffset + "px";
+                    self.style.zIndex = z++;//所选元素的层级永远最高
+                    self.style.opacity = 0.9;//将选中的元素改变透明度
+
+                    var xR = x1 - photo.offsetLeft;//所选元素相对的横坐标值
+                    var yR = y1 - photo.offsetTop;//所选元素相对的纵纵坐标值
+                    for(var n=0; n<l; n++){
+                        liList[n].style.transform = "";
+                        liList[n].style.boxShadow = "";
+                        //是否碰撞(新元素的的left值〈所选元素的left值〈新元素left+width的值，top值同理)
+                        //但是新元素的left，top值是相对于元素边框的位置
+                        // ，移动的所选元素left，top值是相对浏览器边框的位置
+                        //，所以需要转换移动的所选元素的left，top值
+                        if(
+                            xR > liList[n].offsetLeft &&
+                            xR < liList[n].offsetLeft + 200 &&
+                            yR > liList[n].offsetTop &&
+                            yR < liList[n].offsetTop + 120 &&
+                            liList[n] != self
+                        ){
+                            liList[n].style.transform = "scale(1.05)";//被碰撞元素变大
+                            liList[n].style.boxShadow = "0 0 5px #ff9900";
+                            goalLi = liList[n];
+                            //console.log(goalLi);
+                        }
+                    }
+                    window.onmouseup = function(){
+                        if(goalLi){
+                            //4.1：碰撞成功就互相交换
+                            self.style.left = goalLi.offsetLeft + "px";
+                            self.style.top = goalLi.offsetTop + "px";
+                            goalLi.style.left = selfLeft + "px";
+                            goalLi.style.top = selfTop + "px";
+                            goalLi.style.transform = "";
+                            goalLi.style.boxShadow = "";
+                        }
+                        else {
+                            self.style.left = selfLeft + "px";
+                            self.style.top = selfTop + "px";
+                        }
+                        document.onmousemove = "";
+                    }
+                };
+                return false;//清除图片默认拖拽
+            };
+        }
+    </script>
+</body>
+</html>

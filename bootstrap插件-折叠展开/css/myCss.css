@@ -1,0 +1,39 @@
+.left, .middle, .right{
+    float: left;
+}
+.left{
+     background: #fdd;
+ }
+.middle{
+    background: #dfd;
+}
+.right{
+    background: #ddf;
+}
+@media screen and (min-width: 990px){
+.left{
+    width: 20%;
+}
+.middle{
+    width: 60%;
+}
+.right{
+    width: 20%;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 989px){
+    .right{
+        display: none;
+    }
+    .left{
+        width: 25%;
+    }
+    .middle{
+        width: 75%;
+    }
+}
+@media screen and (max-width: 767px){
+    .right{
+        display: none;
+    }
+}

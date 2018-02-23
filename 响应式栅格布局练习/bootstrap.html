@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootlint.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>响应式栅格布局练习</h1>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="list-inline">
+                <li><a href="javascript:;">Home</a></li>
+                <li><a href="javascript:;">News</a></li>
+                <li><a href="javascript:;">Product</a></li>
+            </ul>
+        </div>
+        <div class="col-md-offset-2 col-md-6 col-sm-offset-1 col-sm-5 col-xs-12">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-3 col-xs-12">左侧导航
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur debitis esse ex laudantium placeat repudiandae vitae. Accusantium at ea incidunt iusto neque officiis, praesentium provident quis quisquam voluptas. Cum, voluptate.
+        </div>
+        <div class="col-md-8 col-sm-9 col-xs-12 text-justify">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6"><img class="img-responsive" src="images/demo.jpg" alt=""></div>
+                <div class="col-sm-3 col-xs-6"><img class="img-responsive" src="images/demo.jpg" alt=""></div>
+                <div class="col-sm-3 col-xs-6"><img class="img-responsive" src="images/demo.jpg" alt=""></div>
+                <div class="col-sm-3 col-xs-6"><img class="img-responsive" src="images/demo.jpg" alt=""></div>
+            </div>
+            中间主体
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos distinctio dolor error eveniet explicabo magnam minima minus, nobis odio pariatur perferendis praesentium quibusdam quis ratione reiciendis ut veniam, voluptatem.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos distinctio dolor error eveniet explicabo magnam minima minus, nobis odio pariatur perferendis praesentium quibusdam quis ratione reiciendis ut veniam, voluptatem.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos distinctio dolor error eveniet explicabo magnam minima minus, nobis odio pariatur perferendis praesentium quibusdam quis ratione reiciendis ut veniam, voluptatem.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos distinctio dolor error eveniet explicabo magnam minima minus, nobis odio pariatur perferendis praesentium quibusdam quis ratione reiciendis ut veniam, voluptatem.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos distinctio dolor error eveniet explicabo magnam minima minus, nobis odio pariatur perferendis praesentium quibusdam quis ratione reiciendis ut veniam, voluptatem.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos distinctio dolor error eveniet explicabo magnam minima minus, nobis odio pariatur perferendis praesentium quibusdam quis ratione reiciendis ut veniam, voluptatem.
+        </div>
+        <div class="col-md-2 hidden-sm hidden-xs">右侧广告
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur eligendi, impedit ipsam quia quibusdam quidem ratione repellat tempora vero. Culpa dolorem ea et obcaecati? Earum libero maiores saepe vero!
+        </div>
+    </div>
+</div>
+<script>
+    //---------------完成项目后删除---------------
+    (function () {
+        var s = document.createElement("script");
+        s.onload = function () {
+            bootlint.showLintReportForCurrentDocument([]);
+        };
+        s.src = "js/bootlint.js";
+        document.body.appendChild(s);
+    })();
+    //--------------------end--------------------
+</script>
+</body>
+</html>

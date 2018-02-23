@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东首页</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        /*S nav*/
+        .wrap{
+            width: 1190px;
+            height: 480px;
+            margin: 80px auto 0;/*上80 左右自适应居中 下0*/
+            /*
+                一个值代表上下左右
+                两个值 上 下 左右
+                三个值 上 左右 下
+                四个值 上 右 下 左
+            */
+            border: 3px solid red;
+        }
+        .wrap-left{
+            width: 190px;
+            height: 480px;
+            background: #ff66cc;
+            float: left;
+            margin-right: 10px;
+        }
+        .wrap-middle{
+            width: 790px;
+            height: 480px;
+            float: left;
+        }
+        .wrap-right{
+            width: 190px;
+            height: 480px;
+            background: #cc0033;
+            float: left;
+            margin-left: 10px;
+        }
+        .w-middle-top{
+            width: 790px;
+            height: 340px;
+            background: #66ff99;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .w-middle-top ul li{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .w-middle-top .tab{
+            position: absolute;
+            bottom: 15px;
+            /*下面两个属性使其居中*/
+            left: 50%;
+            margin-left: -64px;
+            background: rgba(255,255,255,.3);
+            border-radius: 12px;
+            padding: 0 8px;
+        }
+        .w-middle-top .tab i{/*i标签无宽高*/
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 2px;
+        }
+        .w-middle-bottom{
+            width: 790px;
+            height: 130px;
+        }
+        .w-m-b-left{
+            width: 390px;
+            height: 130px;
+            background: #003399;
+            float: left;
+            margin-right: 10px;
+        }
+        .w-m-b-right{
+            width: 390px;
+            height: 130px;
+            background: #000000;
+            float: left;
+        }
+        /*E nav*/
+        /*S footer*/
+        /*E footer*/
+    </style>
+</head>
+<body>
+    <!--
+        布局：
+           1.整体布局
+           2.局部分析
+           3.调整位置
+           4.添加样式
+    -->
+    <!--S nav-->
+    <!--s代表start-->
+    <div class="wrap">
+        <div class="wrap-left"></div>
+        <div class="wrap-middle">
+            <div class="w-middle-top">
+                <ul>
+                    <li>
+                        <img src="images/1.jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/2(1).jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/3.jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/4.jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/5.jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/6.jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/7.jpg" alt="" width="790" height="340">
+                    </li>
+                    <li>
+                        <img src="images/8.jpg" alt="" width="790" height="340">
+                    </li>
+                </ul>
+                <div class="tab">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </div>
+            <div class="w-middle-bottom">
+                <div class="w-m-b-left"></div>
+                <div class="w-m-b-right"></div>
+            </div>
+        </div>
+        <div class="wrap-right"></div>
+    </div>
+    <!--E nav-->
+    <!--S footer-->
+    <div class="footer"></div>
+    <!--E footer-->
+</body>
+</html>
+<!--
+    模块化(首先要有清晰的开始结束提示,结构和样式都要有) 插件化 可插拔式（模块之间互不影响）
+-->

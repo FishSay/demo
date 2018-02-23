@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular全选</title>
+    <script src="angularJS/angular.js"></script>
+</head>
+<body ng-app>
+<p><input type="checkbox" ng-model="checked">全选/取消全选</p>
+<!--ng-checked和ng-selected只会做数据到视图的同步，不会做视图到数据的同步-->
+<ul>
+    <li>选项01<input type="checkbox" ng-checked="checked"></li>
+    <li>选项02<input type="checkbox" ng-checked="checked"></li>
+    <li>选项03<input type="checkbox" ng-checked="checked"></li>
+    <li>选项04<input type="checkbox" ng-checked="checked"></li>
+    <li>选项05<input type="checkbox" ng-checked="checked"></li>
+</ul>
+<!--每个input也用ng-model的话，不管选中哪个其他所有也会被选中，所以p里的用ng-model，li中用ng-checked-->
+</body>
+</html>

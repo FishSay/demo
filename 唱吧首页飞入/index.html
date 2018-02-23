@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            background: #ff5046;
+            font-family: "Microsoft Himalaya";
+            overflow: hidden;
+        }
+        .header{
+            width: 960px;
+            height: 80px;
+            margin: 0 auto;
+            color: #fff;
+            line-height: 80px;
+        }
+        .header-l{
+            float: left;
+        }
+        .header-l a{
+            diaplay: block;
+        }
+        .header-l a img{
+            vertical-align: middle;
+        }
+        .header-r{
+            float: right;
+        }
+        .header-r ul:after{
+            content: '';
+            display: block;
+            height: 0;
+            clear: both;
+        }
+        .header-r ul li{
+            list-style: none;
+            float: left;
+            margin-left: 33px;
+        }
+        .header-r ul li a{
+            line-height: 85px;
+            color: #fff;
+        }
+        .title{
+            width: 960px;
+            margin: 0 auto;
+        }
+        .title img{
+            display: block;
+            margin: 20px auto;
+        }
+        .title a{
+            display: block;
+            margin: 0 auto;
+            width: 103px;
+            height: 48px;
+            color: #fff;
+            padding-left: 60px;
+            line-height: 48px;
+            text-decoration: none;
+            background: url("img/download.png") no-repeat;
+        }
+        .content{
+            width: 960px;
+            height: 430px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .content img{
+            position: absolute;
+        }
+        .content img:nth-child(1){
+            /*left: -28px;*/
+            left: -1000px;
+            top: 111px;
+        }
+        .content img:nth-child(1).on{
+            left: -28px;
+            top: 111px;
+            transition: 0.5s 1s;/*过渡时间 延时时间*/
+        }
+        .content img:nth-child(2){
+            /*left: 151px;*/
+            left: -1000px;
+            top: 81px;
+        }
+        .content img:nth-child(2).on{
+            left: 151px;
+            top: 81px;
+            transition: 0.5s 0.5s;
+        }
+        .content img:nth-child(3){
+            left: 313px;
+            top: 15px;
+            animation: move 0.8s linear;/*动画名称（move） 时间（0.8s） 方式（匀速）*/
+        }
+        @keyframes move {
+            0%{
+                transform: scale(0);/*缩放*/
+            }
+            30%{
+                transform: scale(1.2);
+            }
+            40%{
+                transform: scale(0.85);
+            }
+            50%{
+                transform: scale(1.15);
+            }
+            60%{
+                 transform: scale(0.9);
+             }
+            70%{
+                transform: scale(1.1);
+            }
+            80%{
+                transform: scale(0.95);
+            }
+            90%{
+                transform: scale(1.05);
+            }
+            100%{
+                transform: scale(1);/*回归到初始值*/
+            }
+        }
+        .content img:nth-child(4){
+            /*left: 514px;*/
+            left: 1500px;
+            top: 22px;
+        }
+        .content img:nth-child(4).on{
+            left: 514px;
+            top: 22px;
+            transition: 0.5s 0.5s;
+        }
+        .content img:nth-child(5){
+            /*left: 668px;*/
+            left: 1500px;
+            top: 0px;
+        }
+        .content img:nth-child(5).on {
+            left: 668px;
+            top: 0px;
+            transition: 0.5s 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="header">
+            <div class="header-l">
+                <a href="">
+                    <img src="img/logo.png" alt="" />
+                </a>
+            </div>
+            <div class="header-r">
+                <ul>
+                    <li>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">精彩</a>
+                    </li>
+                    <li>
+                        <a href="#">会员中心</a>
+                    </li>
+                    <li>
+                        <a href="#">金币充值</a>
+                    </li>
+                    <li>
+                        <a href="#">分享伴奏</a>
+                    </li>
+                    <li>
+                        <a href="#">唱吧直播间</a>
+                    </li>
+                    <li>
+                        <a href="#">火星直播</a>
+                    </li>
+                    <li>
+                        <a href="#">游戏中心</a>
+                    </li>
+                    <li>
+                        <a href="#">加入唱吧</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="title">
+            <img src="img/ktv.png" alt="" />
+            <a href="">免费下载</a>
+        </div>
+        <div class="content">
+            <img src="img/top1.png" alt="1" width="275" height="328" />
+            <img src="img/top2.png" alt="2" width="291" height="312" />
+            <img src="img/top3.png" alt="3" width="354" height="371" />
+            <img src="img/top4.png" alt="4" width="303" height="263" />
+            <img src="img/top5.png" alt="5" width="306" height="226" />
+        </div>
+    </div>
+    <script>
+        var con = document.getElementsByClassName("content")[0];
+        var aImg = con.getElementsByTagName("img");//TagName是标签名
+        window.onload = function(){//页面加载的时候执行
+            for(var i = 0; i < aImg.length; i++){
+                aImg[i].className = "on";//添加类名
+            }
+        }
+    </script>
+</body>
+</html>
+<!--
+    定位(父相子绝)：
+        1.让元素发生位置上的运动或者元素要运动
+        2.层级的改变
+
+        css动画的关键帧
+            @keyframes相当于一帧一帧播放动画
+-->

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电子名片</title>
+    <style>
+        *{/*通配符：选择到所有标签*/
+            margin:0;/*外边距*/
+            padding: 0;/*内边距*/
+        }
+        body{
+            background: url("images/1.jpg");
+            background-position: center top; /*背景定位：显示在中间 top代表在文字上边*/
+        }
+
+        #box{
+            width:840px;
+            height: 300px;
+            /*background: #cc3333;*/
+            margin: 50px auto;
+        }
+        #box .info{/* .是class的选择期*/
+            width:450px;
+            heith:300px;
+            /*background: #ff9999;*/
+            float: left;
+        }
+        .info p{
+            width: 200px;
+            height: 40px;
+            background: #333;
+            color: #fff;
+            float: left;
+            border-radius: 5px;/*边框圆角属性*/
+            margin: 10px 10px;
+        }
+        .info p.btn{
+            width: 450px;
+            background: #00cc00;
+            margin-left: 0px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;/*鼠标手的形状*/
+        }
+        .info p span{/*行内元素，设置宽高不起作用*/
+            /*display: block;设置为块元素，宽高其左右，但是沾满一行显示*/
+            /*display: inline-block;行间块元素，可以设置宽高，也可以在一行显示*/
+            width: 50px;
+            height: 40px;
+            float: left;
+            text-align: center;
+            line-height: 40px;/*一行文本占多高*/
+        }
+        .info p input{
+            width: 150px;
+            height: 40px;
+            border: 0;/*去除默认边框*/;
+            float: left;/*左浮动。默认行为不起作用，能够设置宽高*/
+            background: #fff;
+            outline: 0;/*轮廓*/
+            /*padding-left: 5px;左内边距*/
+            text-indent: 10px;/*文本缩进*/
+        }
+        #qrcode{
+            width: 256px;
+            height: 257px;
+            border: 1px solid red;/*边框线：宽度 类型（实线） 颜色*/
+            margin-top: 20px;
+            /*display: inline-block;若用此标签，就不需要在这里和#box .info里加上float标签*/
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="info">
+            <p>
+                <span>姓名</span><!--文本标签-->
+                <input type="text" id="name">
+            </p>
+            <p>
+                <span>公司</span><!--文本标签-->
+                <input type="text" id="company">
+            </p>
+            <p>
+                <span>职务</span><!--文本标签-->
+                <input type="text" id="title">
+            </p>
+            <p>
+                <span>地址</span><!--文本标签-->
+                <input type="text" id="address">
+            </p>
+            <p>
+                <span>手机</span><!--文本标签-->
+                <input type="text" id="mobile">
+            </p>
+            <p>
+                <span>邮箱</span><!--文本标签-->
+                <input type="text" id="email">
+            </p>
+            <p>
+                <span>网址</span><!--文本标签-->
+                <input type="text" id="web">
+            </p>
+            <p>
+                <span>备注</span><!--文本标签-->
+                <input type="text" id="desc">
+            </p>
+            <p class="btn">开启通讯录</p>
+        </div>
+
+        <div id="qrcode"></div><!--id唯一，class可重复-->
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/qrcode.js"></script>
+    <script>
+        /*$(".btn")获取点击按钮*/
+        //获取input里输入的值
+        //定义变量用来存储相应的input值
+        var name,company,title,address,mobile,email,web,desc;
+        $(".btn").click(function(){//点击实现什么功能
+            name = "FN:" + $("#name").val() + "\n";//获取input的值赋值给name
+            company = "ORG:" + $("#company").val() + "\n";
+            title = "TITLE:" + $("#title").val() + "\n";
+            address = "ADR:" + $("#address").val() + "\n";
+            mobile = "TEL:" + $("#mobile").val() + "\n";
+            email = "EMAIL:" + $("#email").val() + "\n";
+            web = "URL:" + $("#web").val() + "\n";
+            desc = "NOTE:" + $("#desc").val() + "\n";
+            //1.若不加入以上开头的东西，手机不会识别为名片，扫描二维码出现的内容为“一扫描的以下内容”
+            var info = "BEGIN:VCARD\n" +name + company + title + address + mobile + email + web + desc + "END:VCARD";
+            //2.还要在上面的收尾加上“BEGIN:VCARD”和"END:VCARD"才可以被手机识别为名片，1和2缺一不可
+            //console.log(info);//在控制台输出
+            $("#qrcode").html("");//生成二维码之前先清空二维码
+            var qrcode = new QRCode("qrcode");//创建一个对象
+            qrcode.makeCode(info);//生成二维码
+        });
+    </script>
+</body>
+</html>

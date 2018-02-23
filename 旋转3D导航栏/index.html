@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="3D,旋转,导航栏">
+    <meta name="description" content="这是一个3D效果的导航栏"><!--广告(网站的简介)-->
+    <title>旋转3D导航栏</title>
+    <style>/*style之间用这个注释*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            display: flex;/*弹性盒模型*/
+            margin: 100px auto;
+            width: 508px;
+            height: 300px;
+        }
+        .tab{
+            width: 200px;
+            height: 300px;
+            margin-right: 8px;
+        }
+        .content{
+            position: relative;/*建立坐标系*/
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;/*3d旋转*/
+            transition: transform 1s;/*过度:属性名称 变换时间*/
+        }
+        .tab1,.tab2,.tab3{
+            width: 200px;
+            height: 100px;
+            font-size: 16px;
+            color: #ffffff;
+            text-align: center;/*水平居中*/
+            line-height: 100px;/*垂直居中*/
+            font-weight: bold;/*字体加粗*/
+        }
+        .tab1{
+            background: #06d6a0;
+        }
+        .tab2{
+            background: #1b9aaa;
+        }
+        .tab3{
+            background: #ef476f;
+        }
+        .content1,.content2,.content3{
+            position: absolute;/*绝对定位,后飘起来的比前一个飘的高*/
+            width: 300px;
+            height: 300px;
+            font-size: 16px;
+            color: #ffffff;
+            text-align: center;/*水平居中*/
+            line-height: 300px;/*垂直居中,此父级div多高,这个值就是多少*/
+            font-weight: bold;/*字体加粗*/
+        }
+        .content1{
+            background: #06d6a0;
+            transform: translateY(-150px) rotateX(90deg);/*以x轴为原点顺时针转270°*/
+        }
+        .content2{
+            transform: translateZ(150px);
+            background: #1b9aaa;
+        }
+        .content3{
+            background: #ef476f;
+            transform: translateY(150px) rotateX(270deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="tab">
+            <div class="tab1">TOP</div>
+            <div class="tab2">FRONT</div>
+            <div class="tab3">BOTTOM</div>
+        </div>
+        <div class="content">
+            <div class="content1">TOP CONTENT</div>
+            <div class="content2">FRONT CONTENT</div>
+            <div class="content3">BOTTOM CONTENT</div>
+        </div>
+    </div><!--nav是导航栏-->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+    $(".tab1").mouseenter(function(){
+        $(".content").css("transform","rotateX(-90deg)")
+    });
+    $(".tab2").mouseenter(function(){
+        $(".content").css("transform","rotateX(0deg)")
+    });
+    $(".tab3").mouseenter(function(){
+        $(".content").css("transform","rotateX(90deg)")
+    });
+</script>
+</body>
+</html>
+<!--
+    普通流:一个块级元素在父级中
+      从上往下排
+      从左开始排
+      一个块级元素占一行
+-->

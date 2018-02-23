@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular模块</title>
+    <script src="angularjs/angular.js"></script>
+</head>
+<body>
+    <div ng-app="MyApp" ng-controller="DemoController"> <!--与第一个参数名保持一致-->
+        <h1>使用ng实现双边数据绑定</h1>
+        <input type="text" placeholder="输入你的姓名" ng-model="user.name">
+        <p>hello <strong>{{user.name}}</strong></p>
+        <input type="button" ng-click="show()">
+    </div>
+    <script>
+        //注册模块 通过module函数，
+        // 第一个参数是这个模块的名字
+        //！！！第二个参数是这个模块所依赖的模块，
+        //如果不依赖任何模块也必须传递第二参数,
+        //如果没有第二个参数，angular.module就不是创建一个模块
+        //angular.module返回刚刚创建的模块对象
+        var app = angular.module("MyApp", []);
+        //app.controller方法用于创建一个控制器,创建的控制器属于myApp模块
+        app.controller("DemoController", function($scope){//参数名就是这个
+            //当控制器执行时会自动执行的函数
+            $scope.user = {};
+            $scope.user.name = "张三";
+            //$scope不仅仅可以往视图中暴露数据，还可以暴露行为
+            $scope.show = function(){
+                console.log($scope.user);
+            }
+        });//所有命名要加上Controller
+    </script>
+</body>
+</html>

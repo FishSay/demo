@@ -1,0 +1,125 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+  <title>组件-下拉菜单</title>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="">
+  <script src="js/bootlint.js"></script>
+  <script src="js/bootstrap.js"></script>
+</head>
+<body style="margin-top: 50px;">
+<!--如果想要展开菜单导航条下面内容跟着往下移，只要把.navbar-fixed-top（固定定位）去掉就好，效果见底部导航栏-->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!--导航头部-->
+    <div class="navbar-header">
+      <!--logo/商标(brand)-->
+      <a href="#" class="navbar-brand">Bootstrap</a>
+      <!--折叠菜单的按钮-->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#my_collapse_top">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <!--导航折叠部分-->
+    <div id="my_collapse_top" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+        <li>
+          <a href="#" data-toggle="dropdown">Products<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">TV</a></li>
+            <li><a href="#">Camera</a></li>
+            <li><a href="#">Computer</a></li>
+            <li class="divider"></li>
+            <li><a href="#">MilkPowder</a></li>
+            <li><a href="#">BabyClothes</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+      <a href="#" class="navbar-link navbar-text navbar-right">REGISTER</a>
+
+      <span class="navbar-text navbar-right">|</span>
+
+      <button class="btn btn-success navbar-btn navbar-right" type="button">LOGIN</button>
+
+      <form action="" class="navbar-form navbar-right">
+        <!--feedback是反馈的意思，输入框中放置的图标，称为反馈图标，表单中用has-feedback-->
+        <div class="form-group has-feedback">
+          <!--.sr-only意思是Screen Reader Only仅屏幕阅读软件可见-->
+          <label for="kw" class="sr-only">搜索</label>
+          <input type="text" id="kw" class="form-control" placeholder="Search">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<h1>组件-响应式导航条</h1>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+版权声明
+<div class="navbar navbar-inverse">
+  <div class="container">
+    <!--导航头部-->
+    <div class="navbar-header">
+      <!--logo/商标(brand)-->
+      <a href="#" class="navbar-brand">
+        <img src="images/logo.png" alt="">
+      </a>
+      <!--折叠菜单的按钮-->
+      <button type="button" class="navbar-toggle"  data-toggle="collapse" data-target="#my_collapse_bot">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+  </div>
+    <!--导航折叠部分-->
+    <div id="my_collapse_bot" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Info</a></li>
+      </ul>
+
+
+      <a href="#" class="navbar-link navbar-text navbar-right">REGISTER</a>
+
+      <span class="navbar-text navbar-right">|</span>
+
+      <button class="btn btn-success navbar-btn navbar-right" type="button">LOGIN</button>
+
+      <form action="" class="navbar-form navbar-right">
+        <div class="form-group">
+          <!--.sr-only意思是Screen Reader Only仅屏幕阅读软件可见-->
+          <label for="kw" class="sr-only">搜索</label>
+          <input type="text" id="kw" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    </div>
+</div>
+<script>
+  //---------------完成项目后删除---------------
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s);
+  })();
+  //--------------------end--------------------
+</script>
+</body>
+</html>

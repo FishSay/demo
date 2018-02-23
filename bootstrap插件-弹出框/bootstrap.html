@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+  <title></title>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="">
+  <script src="js/bootlint.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+  <h1>插件-警告框</h1>
+  <div class="alert alert-danger alert-dismissible fade in">
+    <span class="close" data-dismiss="alert">&times;</span><!--必须放最前面-->
+    <p>
+      <span class="glyphicon glyphicon-alert alert-dismissible fade in"></span>
+      警告：没有更多的好友消息了
+    </p>
+  </div>
+  <div class="alert alert-success alert-dismissible fade in">
+    <span class="close" data-dismiss="alert">&times;</span>
+    <p>
+      <span class="glyphicon glyphicon-alert"></span>
+      警告：没有更多的好友消息了
+    </p>
+  </div>
+  <div class="alert alert-info alert-dismissible fade in">
+    <span class="close" data-dismiss="alert">&times;</span>
+    <p>
+      <span class="glyphicon glyphicon-alert"></span>
+      警告：没有更多的好友消息了
+    </p>
+  </div>
+  <div class="alert alert-warning alert-dismissible fade in">
+    <span class="close" data-dismiss="alert">&times;</span>
+    <p>
+      <span class="glyphicon glyphicon-alert"></span>
+      警告：没有更多的好友消息了
+    </p>
+  </div>
+
+
+  <br><br>
+
+  <h1>模态弹出框</h1>
+  <a href="#my_modal1" class="btn btn-success" data-toggle="modal">LOGIN</a>
+  <button type="button" class="btn btn-info" data-target="#my_modal2" data-toggle="modal">REGISTER</button>
+</div>
+<!--半透明黑色遮罩层-->
+<div id="my_modal1" class="modal fade" tabindex="-1">
+  <div class="modal-dialog"><!--指定宽/高/定位-->
+    <div class="modal-content"><!--指定边框/背景/阴影-->
+      <div class="modal-header">
+        <span class="close" data-dismiss="modal">&times;</span>
+        <h3 class="modal-title">User Register</h3>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="uname">用户名</label>
+            <input type="text" id="uname" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="upwd">密码</label>
+            <input type="text" id="upwd" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer alert-dismissible">
+        <input class="btn btn-success" type="button" value="提交">
+        <input class="btn btn-danger" type="button" value="关闭" data-dismiss="modal">
+      </div>
+    </div>
+  </div>
+</div>
+<div id="my_modal2" class="modal" tabindex="-1">
+  <div class="modal-dialog"><!--指定宽/高/定位-->
+    <div class="modal-content"><!--指定边框/背景/阴影-->
+      <div class="modal-header">
+        <span class="close" data-dismiss="modal">&times;</span>
+        头部(无fade)
+      </div>
+      <div class="modal-body">主体</div>
+      <div class="modal-footer alert-dismissible">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  //---------------完成项目后删除---------------
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s);
+  })();
+  //--------------------end--------------------
+</script>
+</body>
+</html>

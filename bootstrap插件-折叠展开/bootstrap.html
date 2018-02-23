@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+  <title>插件-折叠</title>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="">
+  <script src="js/bootlint.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>插件-折叠（collapse）</h1>
+  <a href="#my_collapse" class="btn btn-danger" data-toggle="collapse">link触发折叠效果</a>
+  <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#my_collapse">btn触发折叠</button>
+  <br><br>
+  <div id="my_collapse" class="collapse">
+    <div class="alert alert-success">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur corporis, cupiditate eaque eligendi fugiat ipsa itaque minima, nesciunt nisi nulla perferendis provident quaerat quasi repellat tempore vel veritatis vero voluptate!
+    </div>
+  </div>
+
+  <br><br>
+
+  <h1>手风琴效果</h1>
+  <div class="panel-group" id="my_accordion">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a href="#hlm" data-toggle="collapse" data-parent="#my_accordion">《红楼梦》</a>
+        </h3>
+      </div>
+      <div id="hlm" class="collapse panel-collapse">
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolor dolore earum facere harum hic iusto odit provident quidem quo? Consequuntur cumque doloribus error harum molestias natus nisi temporibus, voluptatibus.
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a href="#shz" data-toggle="collapse" data-parent="#my_accordion">水浒传》</a>
+        </h3>
+      </div>
+      <div id="shz" class="collapse panel-collapse">
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolor dolore earum facere harum hic iusto odit provident quidem quo? Consequuntur cumque doloribus error harum molestias natus nisi temporibus, voluptatibus.
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a href="#sgyy" data-toggle="collapse" data-parent="#my_accordion">《三国演义》</a>
+        </h3>
+      </div>
+      <div id="sgyy" class="collapse panel-collapse">
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolor dolore earum facere harum hic iusto odit provident quidem quo? Consequuntur cumque doloribus error harum molestias natus nisi temporibus, voluptatibus.
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a href="#xyj" data-toggle="collapse" data-parent="#my_accordion">《西游记》</a>
+        </h3>
+      </div>
+      <div id="xyj" class="collapse panel-collapse">
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolor dolore earum facere harum hic iusto odit provident quidem quo? Consequuntur cumque doloribus error harum molestias natus nisi temporibus, voluptatibus.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  //---------------完成项目后删除---------------
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s);
+  })();
+  //--------------------end--------------------
+</script>
+</body>
+</html>

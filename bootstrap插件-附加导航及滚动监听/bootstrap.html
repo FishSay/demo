@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+  <title>插件-附加导航及滚动监听</title>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="">
+  <script src="js/bootlint.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.js"></script>
+  <![endif]-->
+</head>
+<body data-spy="scroll" data-target="#myaffix">
+<div class="container">
+  <h1>插件-附加导航</h1>
+  <h2>西游记全文</h2>
+  <div class="row">
+    <div class="col-md-10">
+      <h4 id="c1">第一章 石猴出世</h4>
+      <p class="text-justify">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+      </p>
+      <h4 id="c2">第二章 东海学艺</h4>
+      <p class="text-justify">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+      </p>
+      <h4 id="c3">第三章 龙宫借宝</h4>
+      <p class="text-justify">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+      </p>
+      <h4 id="c4">第四章 大闹天宫</h4>
+      <p class="text-justify">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis esse illum, ipsa mollitia neque
+        nobis odio similique tempora voluptatibus. Animi, ipsa magnam minima quas quo repellat unde ut? Explicabo.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus adipisci atque doloribus hic, ipsum
+        labore molestias nisi officia perspiciatis quae quaerat, saepe vel voluptatem voluptatum! Consequatur corporis
+        necessitatibus sed.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio incidunt libero magni, natus totam
+        vero vitae. Asperiores dolorum ducimus ea expedita facilis laboriosam maxime, minima, necessitatibus pariatur
+        tempore, vero.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cumque dolor est et excepturi expedita,
+        laboriosam magnam modi nesciunt, nihil nulla quaerat, reiciendis tempora veritatis voluptas. Iure laudantium
+        unde velit?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis deleniti dolores fuga itaque maxime
+        molestiae mollitia, non possimus quas quisquam reiciendis repellat repudiandae sint vel voluptas voluptate
+        voluptatem voluptatum!
+      </p>
+    </div>
+    <div class="col-md-2 hidden-sm hidden-xs">
+      <div data-spy="affix" data-offset-top="130" id="myaffix">
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#c1">第一章</a></li>
+          <li><a href="#c2">第二章</a></li>
+          <li><a href="#c3">第三章</a></li>
+          <li><a href="#c4">第四章</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script>
+  //---------------完成项目后删除---------------
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s);
+  })();
+  //--------------------end--------------------
+</script>
+</body>
+</html>

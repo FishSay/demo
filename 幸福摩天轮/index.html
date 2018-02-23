@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>幸福摩天轮</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ferrisWheel{
+            width: 768px;
+            height: 768px;
+            background: url("images/fsw.png");
+            margin: 0 auto;
+            position: relative;
+            animation: rotate1 8s infinite linear;/*infinite指动画一直进行,linear是匀速转*/
+        }
+        .child1, .child2, .child3{
+            position: absolute;
+            width:130px;
+            height: 170px;
+            margin-bottom: 10px;
+            animation: rotate2 8s infinite linear;
+        }
+        .child1{
+            top: 95px;
+            left: 0px;
+            background: url("images/boy.png");
+        }
+        .child2{
+            top: 105px;
+            left: 650px;
+            background: url("images/girl.png");
+        }
+        .child3{
+            top: 650px;
+            left: 330px;
+            background: url("images/shamegirl.png");
+        }
+        @keyframes rotate1{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes rotate2{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ferrisWheel">
+        <div class="child1"></div>
+        <div class="child2"></div>
+        <div class="child3"></div>
+    </div>
+</body>
+</html>

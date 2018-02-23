@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滑动侧边栏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #067e86;
+            height: 2000px;
+        }
+        a{
+            text-decoration: none;/*清除下划线*/
+            color: #000;
+        }
+
+        em{
+            font-style: normal;
+        }
+        #wrap{
+            width: 130px;
+            position: fixed;/*固定定位*/
+            right: 0;
+            top: 200px;
+        }
+        #wrap a{
+            display: block;
+            line-height: 30px;
+            border-bottom: 2px solid #ddd;
+            background: #fff;
+            position: relative;/*相对定位*/
+            padding-left: 34px;
+            color: #000;
+            font-weight: bold;
+            right: -100px;
+        }
+        #wrap a em{
+            display: block;
+            position: absolute;/*绝对定位*/
+            left: 0;
+            width: 30px;
+            height: 30px;
+            background: #025d79;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+        #wrap a:hover{
+            color: #3399ff;
+        }
+        #wrap a:hover em{
+            background: #33ffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <a href="#"><em>0</em>HTML5</a><!--<em></em>强调标签-->
+        <a href="#"><em>1</em>Javascript</a>
+        <a href="#"><em>2</em>Java</a>
+        <a href="#"><em>3</em>C++</a>
+        <a href="#"><em>4</em>Perl</a>
+        <a href="#"><em>5</em>PHP</a>
+        <a href="#"><em>6</em>Node.js</a>
+        <a href="#"><em>7</em>GO</a>
+        <a href="#"><em>8</em>IOS</a>
+        <a href="#"><em>9</em>linux</a>
+        <a href="#"><em>10</em>C#</a>
+        <a href="#"><em>11</em>Python</a>
+        <a href="#"><em>12</em>Rudy</a>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        var timer = null;
+        $("#wrap").hover(function(){
+            //划入
+            var This = $(this);//储存this指针  若无此定义,setTimeout中的this讲变成指代window
+            timer = setTimeout(function(){
+                This.find("a").each(function(i){
+                    var $This = $(this);//当前a
+                    setTimeout(function(){
+                        $This.stop().animate({right:"0px"},300);//动画该笔啊left的值
+                    },50*i);
+                });//each是遍历的意思 所有a都执行
+            },300);//定时器 setTimeout是倒序的5 4 3 2 1
+        },function(){
+            //划出
+            if(timer){
+                clearTimeout(timer);//清除timer定时器
+            }
+            $(this).find("a").each(function(i){
+                var $This = $(this);//当前a
+                setTimeout(function(){
+                    $This.stop().animate({right:"-100px"},300);//动画该笔啊left的值
+                },50*i);
+            });//each是遍历的意思 所有a都执行
+        });//鼠标划过
+    </script>
+</body>
+</html>
+<!--
+    快速复制一行标签:
+    <a href="#"></a>
+    a[href="#"]*12 + tab键
+
+    块级元素(有宽高 独占一行) 行内元素(一般涉及到文字样式 没有宽高 不独占一行) 行内块级元素
+-->

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点图</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        img{
+            display: block;/*清除图片3px间隙*/
+        }
+        .slider{
+            width: 790px;/*图片宽高*/
+            height: 340px;
+            border: 1px solid #000000;
+            margin:100px auto;
+            padding: 5px;/*撑大盒子*/
+            position: relative;
+        }
+        .inner{
+            width:100%;
+            height:100%;
+            background: yellowgreen;
+            position: relative;
+            overflow: hidden;
+        }
+        .inner ul{
+            width:1000%;/*随意的大值就行，能让图片在一行*/
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .inner ul li{
+            float: left;
+        }
+        .slider ol{
+            position: absolute;
+            left: 50%;
+            margin-left: -45px;
+            bottom: 10px;
+        }
+        .slider ol li{
+            float: left;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
+        }
+        .slider ol .current{
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="slider" id=box>
+    <div class="inner">
+        <ul>
+            <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+        </ul>
+    </div>
+
+    <!--由js自动添加-->
+    <!--<ol>-->
+        <!--<li class="current">1</li>-->
+        <!--<li>2</li>-->
+        <!--<li>3</li>-->
+        <!--<li>4</li>-->
+        <!--<li>5</li>-->
+    <!--</ol>-->
+</div>
+<script>
+    var box = document.getElementById("box");
+    var ul = box.children[0].children[0];
+    var lis = ul.children;
+    var ol = document.createElement("ol");
+    var leader = 0, target = 0;
+    box.appendChild(ol);
+
+    for(var i = 0; i < lis.length; i++){
+        var newLis = document.createElement("li");
+        newLis.innerHTML = i + 1;
+        ol.appendChild(newLis);
+        var olLis = ol.children;
+        olLis[0].setAttribute("class", "current");
+
+        olLis[i].index = i;//得到每个span的索引号
+        olLis[i].onmouseover = function(){
+            for(var j = 0; j < lis.length; j++){
+                olLis[j].className = "";
+            }
+            this.setAttribute("class","current");
+            target = -this.index * 790;//目标位置就是用当前的索引号*一个盒子的宽度
+        }
+    }
+
+    setInterval(function(){
+        leader = leader + (target - leader)/10;
+        ul.style.left = leader + "px";
+    }, 30);
+</script>
+</body>
+</html>

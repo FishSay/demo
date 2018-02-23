@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas背景连线</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            display: block;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.requestAnimFrame = (function() {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        var canvas = document.getElementById("canvas");
+        var cxt = canvas.getContext("2d");//创建2d环境,相当于设置画笔
+        var w,h;
+        var num = 200;//粒子初始数量
+        var data = [];//存储粉点坐标位置的数据
+        var move = {};//存储鼠标位置数据
+        window.onresize = init;//窗口尺寸变化
+        init();
+
+        init();
+        function init(){
+            data = [];
+            move = {};
+            //将canvas的宽高设置成浏览器大小,用css样式不可以
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            //粉色点位置,运动速度增量
+            for(var i = 0;i < num; i++){//循环创建粉色点
+                data[i] = {x:Math.random()*w,
+                    y:Math.random()*h,
+                    cX:Math.random()*0.6-0.3,
+                    cY:Math.random()*0.6-0.3};
+                Circle(data[i].x,data[i].y);
+            }
+        }
+
+        //绘制点
+        function Circle(x,y){
+            cxt.save();//保存
+            cxt.fillStyle = "pink";//填充颜色
+            cxt.beginPath();//开始绘画
+            cxt.arc(x,y,0.5,Math.PI*2,false);//圆形arc(x,y(圆心位置),半径,圆形状(用弧度公式表示,PI是180度),true/false(顺时针/逆时针))
+            cxt.closePath();//停止绘画
+            cxt.fill();//填充
+            cxt.restore();//释放
+        }
+
+        //粉色点运动及连线
+        !function draw(){
+            cxt.clearRect(0,0,w,h);//先清除画布
+            for(var i = 0;i < num; i++){//当前的点
+                data[i].x += data[i].cX;
+                data[i].y += data[i].cY;
+                //边界值判断,防止点越来越少,使点都在其中运动
+                if(data[i].x > w || data[i].x < 0){
+                    data[i].cX = -data[i].cX;
+                }
+                if(data[i].y > h || data[i].y < 0){
+                    data[i].cY = -data[i].cY;
+                }
+                Circle(data[i].x,data[i].y);
+
+                //用勾股定理来判断是否连线
+                for(var j = i + 1 ; j< num; j++){//下一个点
+                    if((data[i].x - data[j].x) * (data[i].x - data[j].x) +
+                        (data[i].y - data[j].y) * (data[i].y - data[j].y)<= 50 * 50){
+                        //绘制的线条
+                        line(data[i].x,data[i].y,data[j].x,data[j].y,false);
+                    }
+                    if(move.x){
+                        if((data[i].x - move.x) * (data[i].x - move.x) +
+                            (data[i].y - move.y) * (data[i].y - move.y)<= 100 * 100){
+                            //绘制的线条
+                            line(data[i].x,data[i].y,move.x,move.y,true);
+                        }
+                    }
+                }
+            }
+            window.requestAnimFrame(draw);//替代定时器效果
+        }();//函数自执行要在最前面加上感叹号
+
+        function line(x1,y1,x2,y2,isMove){
+            //绘制线条
+            var color = cxt.createLinearGradient(x1,y1,x2,y2);
+            if(!isMove){
+                color.addColorStop(0,"yellow");
+                color.addColorStop(1,"pink");
+            }else{
+                color.addColorStop(0,"#fff");
+                color.addColorStop(1,"#0bd2dd");
+            }
+
+            cxt.save();
+            cxt.strokeStyle = color;
+            cxt.beginPath();
+            cxt.moveTo(x1,y1);
+            cxt.lineTo(x2,y2);
+            cxt.stroke();
+            cxt.closePath();
+            cxt.restore();
+        }
+
+        //移入鼠标进行连线
+        document.onmousemove = function(e){
+            //获取鼠标坐标
+            move.x = e.clientX;
+            move.y = e.clientY;
+        }
+    </script>
+</body>
+</html>
+<!--
+    canvas是画布
+    用画笔来画
+    用原生js结合canvas
+    页面特效超过3个就可以考虑用canvas
+
+    moveTo(x,y):将触笔移动到x,y点
+    lineTo(x,y):绘制到x,y点
+
+    颜色渐变:
+      线性渐变:createLinearGradient(x1,y1,x2,y2)
+        x1,y1起始坐标点
+        x2,y2结束坐标点
+      径向渐变createRadialGradient(x1,y1,r1,x2,y2,r2)
+        x1,y1,r1内圈坐标及半径
+        x2,y2,r2外圈坐标及半径
+      addColorStop(位置,颜色)
+        位置:渐变点0-1之间 可多个
+    绘图路径:
+      beginPath():开始路径
+      closePath():闭合路径
+      moveTo(x,y):将触笔移动到x,y点
+      lineTo():绘制到x,y点
+      stroke():触笔方法画线 默认为黑色
+      fill():填充方法
+      rect(x,y,w,h):矩形路径
+      save():保存路径
+      restore():恢复路径
+    绘制矩形:
+      fillRect(x,y,w,h)填充实心矩形
+      strokeRect(x,y,w,h)绘制空心矩形
+      clearRect(x,y,w,h)清除矩形选区
+    绘制绘图样式:
+      fillStyle:填充颜色
+      strokeStyle:触笔颜色
+      lineWidth:触笔宽度(线宽)
+-->

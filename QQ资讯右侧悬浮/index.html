@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ右侧悬浮 </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 2000px;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+        #qq_con{
+            position: fixed;/*使其不受滚动条影响*/
+            top: 200px;
+            right: 0;
+            width: 160px;
+            height: 200px;
+        }
+        .qq-show{
+            position: absolute;
+            width: 158px;
+        }
+        .top{
+            width: 100%;
+        }
+        .content{
+            width: 100%;
+            background: url("images/bg.jpg");
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        .content img.ewm{/*行内元素，且其没有左右边距*/
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+        img.top-img{
+            display: block;
+        }
+        .content p{
+            width: 140px;
+            margin: auto;
+            font-size: 12px;
+            border-bottom: 1px solid #fff;
+            line-height: 30px;
+        }
+        .qq-hide{
+            position: absolute;
+            right: -33px;
+        }
+    </style>
+</head>
+<body>
+    <div id="qq_con">
+        <div class="qq-show">
+            <div class="top">
+                <img src="images/top.png" alt="top" class="top-img" />
+            </div>
+            <div class="content">
+                <img src="images/ewm.jpg" alt="ewm" class="ewm"/>
+                <p>
+                    <a href="#">
+                        <img src="images/qq.jpg" alt="qq" align="absmiddle"/><!--align="absmiddle"指图片旁边文本居中对其-->
+                        报名：635955558
+                    </a>
+                </p>
+            </div>
+            <div class="btn">
+                <img src="images/bot.png" alt="bottom" />
+            </div>
+        </div>
+        <div class="qq-hide">
+            <img src="images/small.png" alt="hide-small" />
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        /*
+           1.点击x按钮，资讯框就跑出去
+           2.资讯框不见后，隐藏框出现
+        */
+        $(".btn").click(function(){
+            //资讯框就跑出去
+            $(".qq-show").animate({left:"160px"},1000,function(){
+                $(".qq-hide").animate({right:"0"},500);
+            });
+        });
+
+        $(".qq-hide").click(function(){
+            //资讯框就跑出去
+            $(".qq-hide").animate({right:"-33px"},1000,function(){
+                $(".qq-show").animate({left:"0"},500);
+            });
+        });
+    </script>
+</body>
+</html>
+<!--图片自带向下边距，不是样式
+    定位父级不一定要是相对定位 只要有定位属性
+    不管是什么定位，都可以直接参照
+-->

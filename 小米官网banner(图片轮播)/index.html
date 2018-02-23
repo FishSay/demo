@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta keyword="关键词">
+    <meta >
+    <title>小米官网banner</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #banner{
+            position: relative;
+            width: 1226px;
+            height: 460px;
+        }
+        #banner ul.pic li{/*ul和.pic中间不能有空格*/
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #banner ul.btnList{
+            width: 150px;
+            height: 10px;
+            position: absolute;
+            right: 50px;
+            bottom: 30px;
+        }
+        #banner ul.btnList li{
+            float: left;
+            margin-left: 10px;
+            width: 6px;
+            height: 6px;
+            background: rgba(0,0,0,.4);
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+        }
+        #banner ul.btnList li:hover{
+            border-color: rgba(0,0,0,.6);
+            background: rgba(255,255,255,.4);
+        }
+        #banner ul.btnList li.active{
+            border-color: rgba(0,0,0,.6);
+            background: rgba(255,255,255,.4);
+        }
+        #banner .tab{
+            position: absolute;
+            top: 195px;
+            width: 41px;
+            height: 69px;
+            background: url("images/icon-slides.png");
+        }
+        #banner .perv{
+            left: 218px;
+            background-position: -84px;/*改变背景图片的位置*/
+        }
+        #banner .next{
+            right: 0;
+            background-position: -125px;/*改变背景图片的位置*/
+        }
+        #banner .perv:hover{
+            background-position: 0;/*改变背景图片的位置*/
+        }
+        #banner .next:hover{
+            background-position: -41px;/*改变背景图片的位置*/
+        }
+    </style>
+</head>
+<body>
+    <!--nav是导航栏的名字,行内元素样式内优先级高-->
+    <div id="nav"
+         style="width: 1226px;height: 70px;">导航部分</div>
+    <div id="banner">
+        <ul class="pic">
+            <li style="display: block">
+                <img src="images/1.jpg" alt="" />
+            </li>
+            <li>
+                <img src="images/2.jpg" alt="" />
+            </li>
+            <li>
+                <img src="images/3.jpg" alt="" />
+            </li>
+            <li>
+                <img src="images/4.jpg" alt="" />
+            </li>
+            <li>
+                <img src="images/5.jpg" alt="" />
+            </li>
+        </ul>
+        <ul class="btnList">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="tab perv"></div>
+        <div class="tab next" ></div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        /*
+           1.找到特效作用点  2.找到触发事件
+        */
+        var index = 0;
+        $(".btnList li").click(function(){//一定要记得加上li否则只影响ul的class名
+            index = $(this).index();//获取当前下标
+            $(this).addClass("active").siblings().removeClass();
+            $(".pic li").eq(index).fadeIn().siblings().fadeOut();
+        });
+//        var time = setInterval(function(){
+//            index = $(".btnList li").index();//获取当前下标
+//            $(".btnList li").addClass("active").siblings().removeClass();
+//            $(".pic li").eq(index).fadeIn().siblings().fadeOut();
+//        },2000);
+    </script>
+</body>
+</html>

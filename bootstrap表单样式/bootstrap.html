@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,, user-scalable=no">
+  <title></title>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="">
+  <script src="js/bootlint.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>全局CSS样式--表单</h1>
+  <h2>1.默认表单</h2>
+  <form action="">
+    <div class="form-group">
+      <label class="control-label" for="uname">用户名：</label>
+      <input type="text" id="uname" class="form-control">
+      <span class="help-block">用户名长度在6~12位之间</span>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="upwd">密码：</label>
+      <input type="text" id="upwd" class="form-control">
+      <span class="help-block">密码中必须包含数字、字母 class=help-block</span>
+    </div>
+    <!--为了让单选和文字在同一水平相，label要被包含在class为checkbox的div中-->
+    <div class="checkbox">
+      <!--bootstrap编码规范中指定：单选/复选按钮要和文字一起放在label中，且没有for-->
+      <label>
+        <input type="checkbox">我接受本站的使用条款
+      </label>
+    </div>
+
+    <input class="btn btn-success" type="button" value="提交">
+    <input class="btn btn-danger" type="button" value="清空">
+  </form>
+
+
+  <h2>2.行内表单(inline)</h2>
+
+  <form action="" class="form-inline">
+    <div class="form-group">
+      <label class="control-label" for="uname2">用户名：</label>
+      <input type="text" id="uname2" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="upwd2">密码：</label>
+      <input type="text" id="upwd2" class="form-control">
+    </div>
+
+    <input class="btn btn-default" type="button" value="登录">
+  </form>
+
+  <h2>3.水平表单(horizontal)</h2>
+  <h4>默认的栅格：.container>.row>.col-*</h4>
+  <h4>水平表单的栅格：.form-horizontal>.form-group>.col-*</h4>
+  <form action="" class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-md-2" for="uname3">用户名：</label>
+      <div class="col-md-6">
+        <input type="text" id="uname3" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <span class="help-block">用户名长度在6~12位之间</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-2" for="upwd3">密码：</label>
+      <div class="col-md-6">
+        <input type="text" id="upwd3" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <span class="help-block">密码中必须包含数字、字母</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">我接受本站的使用条款
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-2">
+        <input class="btn btn-success" type="button" value="提交">
+        <input class="btn btn-danger" type="button" value="清空">
+      </div>
+    </div>
+  </form>
+
+</div>
+<script>
+  //---------------完成项目后删除---------------
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s);
+  })();
+  //--------------------end--------------------
+</script>
+</body>
+</html>

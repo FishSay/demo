@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网易云轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .carousel{
+            width: 1200px;
+            height: 366px;
+            margin: 80px auto;
+        }
+        li{
+            position:absolute;
+            list-style: none;
+            width: 730px;
+            height: 336px;
+            transition: all .5s;
+        }
+        .imgList{
+            width: 1200px;
+            height: 336px;
+        }
+        .imgList ul{
+            position: relative;/*要加在加了absolute属性的那个父级标签上*/
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .line{
+            width: 1200px;
+            height: 30px;
+            text-align: center;
+        }
+        .line a{
+            display: inline-block;
+            width: 35px;
+            height: 3px;
+            background: #ccc;
+        }
+        .list1{
+            transform: translate(0,0) scale(.81);
+            transform-origin: 0 100%;/*更改坐标原点*/
+            z-index: 2;
+        }
+        .list2{
+            transform: translate(235px,0);
+            z-index: 3;
+        }
+        .list3{
+            transform: translate(730px,0) scale(.81);
+            transform-origin: 100% 100%;
+            z-index: 2;
+        }
+        .list4{
+            transform: translate(965px,0) scale(.81);
+            transform-origin: 100% 100%;
+        }
+        .list5{
+            transform: translate(1200px,0) scale(.81);
+        }
+        .list6{
+            transform: translate(1435px,0) scale(.81);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="imgList">
+            <ul>
+                <!--javascript:void(0)或者javascript:;可以使点击链接不会刷新网页-->
+                <li class="list1"><a href="javascript:;"><img src="imgs/01.jpg" alt="" /></a></li>
+                <li class="list2"><a href="javascript:;"><img src="imgs/02.jpg" alt="" /></a></li>
+                <li class="list3"><a href="javascript:;"><img src="imgs/03.jpg" alt="" /></a></li>
+                <li class="list4"><a href="javascript:;"><img src="imgs/04.jpg" alt="" /></a></li>
+                <li class="list5"><a href="javascript:;"><img src="imgs/05.jpg" alt="" /></a></li>
+                <li class="list6"><a href="javascript:;"><img src="imgs/06.jpg" alt="" /></a></li>
+            </ul>
+        </div>
+        <div class="line">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+    <script>
+        /*2定义向下翻页按钮
+             2.1:定义数组，存放类名
+             2.2：获取里元素
+             2.3：重新计算一次数组
+             2.4：给li元素重新设置类名
+             2.5：重新计算线形按钮的索引值
+             2.6：重新设置按钮颜色
+           3.绑定事件
+         */
+        //1.1:获取线型按钮
+        //这是个数组，不加[0]的话不能选中我们要选择的
+        //getElementsByTagName("")获取标签
+        var lineB = document.getElementsByClassName("line")[0].getElementsByTagName("a"),
+            index = 0, imgArray = ["list1", "list2", "list3", "list4", "list5", "list6"],
+            liList = document.getElementsByClassName("imgList")[0].getElementsByTagName("li");
+        function lineColor(){
+            for(var i in lineB){//for in效率高但是会输出很多非数字
+                if(i - 0 + 1)//判断索引是否为数字
+                    lineB[i].style.background = "#CCC";
+            }
+            lineB[index].style.background = "#45c17c";
+        }
+        lineColor();
+        //定义向下翻页
+        function nextPic(){
+            imgArray.unshift(imgArray[5]);//将最后一个元素复制并添加到第一个
+            imgArray.pop();//然后将最后一个元素删除
+            for(var i in liList){//for in效率高但是会输出很多非数字
+                if(i - 0 + 1)//判断索引是否为数字
+                    liList[i].setAttribute("class",imgArray[i]);
+            }
+            if(index > 5){
+                index = 0;
+            }
+            else{
+                index++;//下一个按钮
+            }
+            lineColor();
+        }
+        //3:绑定事件
+        document.addEventListener("click", function(){
+            var el = event.target.parentNode.parentNode;
+            if(el.getAttribute("class") == "list3"){
+                nextPic();
+            }
+        });
+        function prePic(){
+            imgArray.push(imgArray[0]);//将第一个元素复制并添加到最后
+            imgArray.shift();//然后将第一个元素删除
+            for(var i in liList){//for in效率高但是会输出很多非数字
+                if(i - 0 + 1)//判断索引是否为数字
+                    liList[i].setAttribute("class",imgArray[i]);
+            }
+            if(index < 0){
+                index = 5;
+            }
+            else{
+                index--;//上一个按钮
+            }
+            lineColor();
+        }
+        //3:绑定事件
+        document.addEventListener("click", function(){
+            var el = event.target.parentNode.parentNode;
+            if(el.getAttribute("class") == "list3"){
+                nextPic();
+            }
+            else if(el.getAttribute("class") == "list1"){
+                prePic();
+            }
+        });
+
+        timer = setInterval(nextPic,2000);
+
+        document.getElementsByClassName("carousel")[0].onmouseover =
+        function(){
+            clearInterval(timer);
+        };
+        document.getElementsByClassName("carousel")[0].onmouseout =
+            function(){
+                timer = setInterval(nextPic,2000);
+            };
+    </script>
+</body>
+</html>

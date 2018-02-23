@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阴阳师幽灵边框特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*
+            body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+				 margin:0;
+				 padding:0;
+		}
+        */
+        body{
+            background: url("img/bg.jpg");
+        }
+        ul{
+            list-style: none;
+        }
+        #wrap{
+            width: 1280px;
+            height:471px;
+            margin: 150px auto;
+        }
+        #wrap ul{
+            display: flex;/*以弹性盒模型展示元素，默认不换行*/
+            flex-wrap: wrap;/*强制换行*/
+            justify-content: space-around;/*主轴方向（默认横向）对齐方式环绕*/
+            align-items: center;/*辅轴（默认纵向）对齐方式 居中*/
+            width: 100%;
+            height: 100%;
+        }
+        #wrap ul li{
+            position: relative;/*相对定位 父级*/
+            width: 418px;
+            height: 213px;
+            box-shadow: 0 0 3px #222;
+            background-repeat: no-repeat;/*背景平铺*/
+            background-position-y: 17px;/*背景定位 向下移动17px*/
+            transition: .5s;
+            cursor: pointer;/*改变鼠标样式*/
+        }
+        #wrap ul li:nth-child(1){/*第一个子元素*/
+            background-image: url("img/p1.png");
+        }
+        #wrap ul li:nth-child(2){
+            background-image: url("img/p2.png");
+        }
+        #wrap ul li:nth-child(3){
+            background-image: url("img/p3.png");
+        }
+        #wrap ul li:nth-child(4){
+            background-image: url("img/p4.png");
+        }
+        #wrap ul li:nth-child(5){
+            background-image: url("img/p5.png");
+        }
+        #wrap ul li:nth-child(6){
+            background-image: url("img/p6.png");
+        }
+        #wrap ul li:hover{/*鼠标移入移出*/
+            background-position-y: 0;
+        }
+        #wrap ul li i{
+            position: absolute;/*绝对定位 子级（自动变成块级元素）*/
+            width: 0px;
+            height: 2px;
+            background: #a57c47;
+        }
+        #wrap ul li i:nth-child(even){/*重复的可以放在这里（Odd 和 even 是可用于匹配下标是奇数或偶数的子元素的关键词）*/
+            width: 2px;
+            height: 0px;
+        }
+        #wrap ul li i:nth-child(1){
+            top: 9px;
+            left: 9px;
+        }
+        #wrap ul li i:nth-child(2){/*右边竖线*/
+            top: 9px;
+            right: 9px;
+        }
+        #wrap ul li i:nth-child(3){
+            bottom: 24px;
+            right: 9px;
+        }
+        #wrap ul li i:nth-child(4){/*左边竖线*/
+            bottom: 24px;
+            left: 9px;
+        }
+        #wrap ul li:hover i:nth-child(1){
+            /*动画 动画名称 动画时间 延迟时间 运动方式 执行几次 定位到最后一次*/
+            animation:ghostRow .2s 0s linear 1 forwards
+        }
+        #wrap ul li:hover i:nth-child(2){
+            animation:ghostCol .09s .2s linear 1 forwards
+        }
+        #wrap ul li:hover i:nth-child(3){
+            animation:ghostRow .2s .29s linear 1 forwards
+        }
+        #wrap ul li:hover i:nth-child(4){
+            animation:ghostCol .09s .39s linear 1 forwards
+        }
+        @keyframes ghostRow{/*CSS3动画*/
+            0%{width: 0;}
+            100%{width: 400px;}
+        }
+        @keyframes ghostCol{
+            0%{height: 0;}
+            100%{height: 180px;}
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul>
+            <li>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </li>
+            <li>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </li>
+            <li>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </li>
+            <li>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </li>
+            <li>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </li>
+            <li>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

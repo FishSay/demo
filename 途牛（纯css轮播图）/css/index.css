@@ -1,0 +1,265 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
+ul li{
+  list-style: none;
+}
+.banner{
+  width: 100%;
+  height: 440px;
+  margin-top: 170px;
+  position: relative;
+}
+.banner .banUl{
+  width: 100%;
+  height: 440px;
+  overflow: hidden;
+}
+.banner .banUl ul li{
+  width: 100%;
+  height: 440px;
+}
+.banner .banUl ul li:nth-child(1){
+  background: url("../images/b1.jpeg") no-repeat center;
+}
+.banner .banUl ul li:nth-child(2){
+  background: url("../images/b2.jpeg") no-repeat center;
+}
+.banner .banUl ul li:nth-child(3){
+  background: url("../images/b3.jpeg") no-repeat center;
+}
+.banner .banUl ul li:nth-child(4){
+  background: url("../images/b4.jpeg") no-repeat center;
+}
+.banner .banUl ul li:nth-child(5){
+  background: url("../images/b5.jpeg") no-repeat center;
+}
+.banner .banUl ul li:nth-child(6){
+  background: url("../images/b6.jpeg") no-repeat center;
+}
+.nav{
+  width: 1190px;
+  height: 430px;
+  position: relative;
+  z-index: 1;
+  margin: -430px auto 0;
+}
+.nav .center{
+  width: 735px;
+  height: 420px;
+  position: absolute;
+  bottom: 10px;
+  left: 225px;
+  z-index: 1;
+}
+.nav .center .top ul{
+  position: absolute;
+  bottom: 129px;
+  left: 50%;
+  margin-left: -354px;
+  z-index: 3;
+}
+.nav .center .top ul li{
+  float: left;
+  width: 116px;
+  height: 18px;
+  line-height: 18px;
+  margin-right: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+.nav .center .top ul li a{
+  font-size: 12px;
+  color: #333;
+  float: left;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.7);
+}
+.nav .center .top ul li a:hover{
+  color: #fff;
+  background: rgba(0,0,0,.7);
+}
+.nav .center .bot{
+  width: 705px;
+  height: 122px;
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  background: #fff;
+}
+.nav .center .bot ul li{
+  float: left;
+  width: 97px;
+  height: 122px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.nav .center .bot ul li img{
+  width: 222px;
+  height: 122px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nav .center .bot ul li:hover{
+  width: 122px;
+}
+.nav .center .bot ul li img:hover{
+  left: -97px;
+}
+.main .left .left1{
+  width: 84px;
+  height: 420px;
+  background: #38414c;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+.main .left .left1 ul li{
+  width: 84px;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px dashed #000000;
+  box-sizing: border-box;
+  padding-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+.main .left .left1 ul li:hover{
+  background: #fff;
+  color: #2ea536;
+  border-bottom: none;
+}
+.main .left .left1 ul li:nth-child(1){
+  background: #fff;
+  color: #2ea536;
+  border-bottom: none;
+}
+.main .left1 ul li i{
+  width: 20px;
+  height: 21px;
+  position: absolute;
+  top: 8px;
+  left: 34px;
+  z-index: 4;
+}
+.main .left1 ul li:nth-child(1) i{
+  background: url("../images/icon.png") 1px -24px;
+}
+.main .left1 ul li:nth-child(2) i{
+   background: url("../images/icon.png") -40px 0;
+}
+.main .left1 ul li:nth-child(2):hover i{
+  background: url("../images/icon.png") -40px -24px;
+}
+.main .left1 ul li:nth-child(3) i{
+  background: url("../images/icon.png") -60px 0;
+}
+.main .left1 ul li:nth-child(3):hover i{
+  background: url("../images/icon.png") -60px -24px;
+}
+.main .left1 ul li:nth-child(4) i{
+  background: url("../images/icon.png") -20px 0;
+}
+.main .left1 ul li:nth-child(4):hover i{
+  background: url("../images/icon.png") -20px -24px;
+}
+.main .left1 ul li:nth-child(5) i{
+  background: url("../images/icon.png") -80px 0;
+}
+.main .left1 ul li:nth-child(5):hover i{
+  background: url("../images/icon.png") -80px -24px;
+}
+.main .left1 ul li:nth-child(6) i{
+  background: url("../images/icon.png") -100px 0;
+}
+.main .left1 ul li:nth-child(6):hover i{
+  background: url("../images/icon.png") -100px -24px;
+}
+.main .left1 ul li:nth-child(7) i{
+  background: url("../images/icon.png") -120px 0;
+}
+.main .left1 ul li:nth-child(7):hover i{
+  background: url("../images/icon.png") -120px -24px;
+}
+
+.main .left .left2{
+  width: 141px;
+  height: 420px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 84px;
+  z-index: 3;
+}
+.main .left .left2 .two{
+  width: 141px;
+  height: 46px;
+  position: relative;
+}
+.left2 .two .second{
+  width: 125px;
+  height: 46px;
+  margin: 0 auto;
+  border-bottom: 1px dashed #dcdcdc;
+  box-sizing: border-box;
+}
+.left2 div:last-child .second{
+  border-bottom: none;
+}
+.two .second .title{
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+.two .second .title a{
+  font-weight: bold;
+  font-size: 14px;
+}
+.two .second .title i{
+  position: absolute;
+  top: 8px;
+  right: 2px;
+  width: 10px;
+  height: 17px;
+  background: url("../images/icon.png") -88px -48px;
+}
+.two .second .note{
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  margin: 0 auto;
+}
+.two .second .note a{
+  font-size: 12px;
+  color: #999;
+}
+.two .second a:hover{
+  color: #ff8801;
+}
+.main .right{
+  width: 230px;
+  height: 420px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.main .right img{
+  width: 100%;
+  height: 100%;
+}

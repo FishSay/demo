@@ -1,0 +1,166 @@
+<!doctype html><!--声明文档类型：html-->
+<html lang="en">
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码:utf-8国际编码-->
+		<meta name="Keywords" content="关键词1,关键词2"><!--关键词-->
+		<meta name="Description" content="描述"><!--描述-->
+		<title>运动框架封装-玄武老师</title><!--网页标题-->
+		<style type="text/css" id="css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				position:relative;
+				left:0;
+				top:0;
+				width:100px;
+				height:100px;
+				background:red;
+			}
+		</style>
+	</head>
+	<body><!--身体-->
+		<div id="box"></div>
+		<div class="div1 div div2"></div>
+		<div class="div"></div>
+		<p class="div"></p>
+		<script type="text/javascript">
+			var oBox = $("box");
+			var oCss = $("css");
+			var aDiv = getElementsByClassName("div");
+			//console.log(aDiv)
+			/*
+				1 为什么要用一个变量来存储
+			*/
+			/*设置div的宽度
+				oBox.style.width = "200px";
+			*/
+			
+			//封装
+			function getId(id){
+				return document.getElementById(id);
+			}
+			/*
+				$(function(){ ==> window.onload = function(){}
+					
+				})
+				$(this)
+				$(id)
+			*/
+			function $(a){
+				if (typeof a === "function")
+				{
+					window.onload = a
+				}else if (typeof a === "string")
+				{
+					return document.getElementById(a);
+				}else if (typeof a === "object")
+				{
+					return a
+				}
+			}
+			/*
+				2 为什么老师用的是三个等号
+			*/
+
+			//低版本IE兼容 getElementsByClassName
+			//IE兼容 getElementsByTagName();
+			function getElementsByClassName(className,parent,tagName){
+				//如果没有限制父元素 就应该是document文档
+				var parent = parent || document;
+				//如果没有限制tagName 就应该是所有的
+				var tagName = tagName || "*";
+				//通过标签名来获取到指定范围内的所有的标签
+				var Eles = parent.getElementsByTagName(tagName);
+				//用一个数组来存储判断成功的元素
+				var el = [];
+				//比较获取到的所有的标签的类名与className是否一样
+				for (var i=0;i<Eles.length ;i++ )
+				{
+					//如果标签拥有多个类名 从空格处切割开
+					var aClassName = Eles[i].className.split(" ");
+					//循环到类名数组里面的每一个值再来做比较
+					for (var j=0;j<aClassName.length ;j++ )
+					{
+						if (aClassName[j] === className)
+						{
+							el.push(Eles[i]);//判断成功就跳出循环
+							break;
+						}
+					}
+				}
+				return el;
+			}
+
+			//获取div的css属性值
+			//var w = oBox.style.width;获取标签的style属性的值
+			//console.log(w)
+			//var w = getComputedStyle(oBox).width;//标准浏览器
+			//console.log(w)
+			//var ieW = oBox.currentStyle.width;低版本IE兼容
+			//console.log(ieW)
+			function getStyle(obj,attr){
+				/*if (obj.currentStyle)
+				{
+					return obj.currentStyle[attr]
+				}else{
+					return getComputedStyle(obj)[attr];
+				}*/
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr]
+			}
+
+			var w = getStyle($("box"),"width");
+			//console.log(w)
+
+			//时间版运动框架
+			/*
+				对象 obj
+				属性 attr
+				时间 time
+				目标值 value
+				回调  callback
+			*/
+			function move(obj,attr,time,value,callback){
+				/*
+					目标值(value) - 初始值(获取) = 路程 = 时间*速度
+				*/
+				//先清除定时器
+				clearInterval(obj.timer);
+				//获取初始值
+				var startValue = parseFloat(getStyle(obj,attr));
+				
+				var nowTime = new Date();//初始时间
+				obj.timer = setInterval(function(){
+					var n = (new Date() - nowTime)/time;
+					//当n >= 1的时候 动画结束
+					if (n >= 1)
+					{
+						//console.log("动画结束")
+						n = 1;
+						//清楚定时器
+						clearInterval(obj.timer);
+						//回调函数
+						callback && callback();
+					}
+					//改变宽度
+					//console.log(startValue)
+					obj.style[attr] = startValue + n*(value - startValue) + "px";
+				},1000/60)
+			}
+
+			document.onclick = function(){
+				move($("box"),"left",500,500,function(){
+					move($("box"),"top",500,500,function(){
+						move($("box"),"left",500,0,function(){
+							move($("box"),"top",500,0,function(){
+								$("box").innerHTML = "转晕圈啦！！转晕圈啦！！转晕圈啦！！"
+							})
+						})
+					})
+				});
+			}
+			
+		</script>
+	</body>
+</html>

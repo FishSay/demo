@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--声明页面编码 uft-8 国际编码-->
+    <meta charset="UTF-8">
+    <!--网站三要素 关键字（keyword） 页面描述（Description） 标题（title）-->
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        #question{
+            width: 100%;
+            padding-top: 50px;
+        }
+        .common-problems{
+            text-align: center;
+        }
+        .common-problems h2{
+            font-size: 38px;
+            font-weight: 100;/*文字粗细*/
+            line-height: 70px;
+        }
+        .common-problems p{
+            color: #999;
+        }
+        .question-box{
+            width: 940px;
+            border: 1px solid #999;
+            margin: 50px auto;
+            padding:0 80px;
+        }
+        .question-box ul li .question-head{
+            border-bottom: 1px solid #666;
+            line-height: 80px;
+            cursor: pointer;/*鼠标手的形状*/
+        }
+        /*去除浮动*/
+        .question-box ul li .question-head:after{/*after伪类相当于在子级span的最后面在添加一个元素*/
+            content: "";
+            display: block;
+            clear: both;/*清除浮动*/
+        }
+        .left{
+            font-size: 18px;
+            float: left;
+        }
+        .right{
+            font-size: 28px;
+            float: right;
+        }
+        .question-box ul li:last-child .question-head{/*last-child定位到最后一个li*/
+            border: none;
+        }
+        .question-content{
+            display: none;/*隐藏*/
+            padding: 30px 0;
+        }
+        .question-content p{
+            color: #999;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="question">
+        <div class="common-problems">
+            <h2>常见问题</h2>
+            <p>您所关心的，我们都将为您解答</p>
+        </div>
+        <div class="question-box">
+            <ul>
+                <li>
+                    <div class="question-head">
+                        <span class="left">1、猪八戒网如何解决我的需求</span>
+                        <span class="right">+</span>
+                    </div>
+                    <div class="question-content">
+                        <p>你好...........</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question-head">
+                        <span class="left">2、APP大概需要多长时间完成上线</span>
+                        <span class="right">+</span>
+                    </div>
+                    <div class="question-content">
+                        <p>...........</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question-head">
+                        <span class="left">3、是否需要费用及如何获取发票进行报销</span>
+                        <span class="right">+</span>
+                    </div>
+                    <div class="question-content">
+                        <p>...........</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question-head">
+                        <span class="left">4、APP开发的流程是怎样的</span>
+                        <span class="right">+</span>
+                    </div>
+                    <div class="question-content">
+                        <p>...........</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="question-head">
+                        <span class="left">5、对于交付的项目质量不满意如何处理</span>
+                        <span class="right">+</span>
+                    </div>
+                    <div class="question-content">
+                        <p>...........</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    var arr = [];
+    $("li").each(function(){/*each是遍历*/
+        arr.push(true);
+    })
+    $("li").click(function(){
+        var index = $(this).index();/*找到点的是第几个li*/
+        if (arr[index])
+        {
+            $(this).find('.right').html("-");
+            $(this).find('span').css({'color' : '#00ccff'});
+            arr[index] = false;
+        }else {
+            $(this).find('.right').html("+")
+            $(this).find('span').css({'color' : '#000'});
+            arr[index] = true;
+        }
+        $(this).find(".question-content").slideToggle();/*过度 显示切换状态的一个方法*/
+    });
+</script>
+</html>
