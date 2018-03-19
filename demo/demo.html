@@ -15,6 +15,11 @@
 </head>
 <body>
 <div class="container">
+  <select>
+    <option :value="{number:123}">123</option>
+  </select>
+ {{amount | currency '￥'}}
+  // 12345 => ￥12,345.00
   <h1 class="show">使用ajax修改内容</h1>
   <button>获取其他内容</button>
   <div class="colorRed"></div>
@@ -26,3 +31,5 @@
 </script>
 </body>
 </html>
+
+
