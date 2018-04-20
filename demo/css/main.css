@@ -1,7 +1,8 @@
-.box {
-  margin: 0 auto;
-  width: 18px;
-  height: 18px;
+#box {
+  width: 20px;
+  height: 20px;
   background: yellowgreen;
-  padding: 10px;
+}
+#box .item {
+  color: #000;
 }
